@@ -13,51 +13,6 @@
 #define windowWidth 800
 #define windowHeight 550
 
-
-int main_1() {
-    const int windowwidth = 800;
-    const int windowheight = 480;
-
-    InitWindow(windowwidth, windowheight, "Dice Roll Animation");
-
-    SetTargetFPS(60);
-
-    int current = 1;
-    int rollDuration = 30;
-    int rollCounter = 0;
-
-    while (!WindowShouldClose()) {
-        // Update
-        if (rollCounter < rollDuration) {
-            // Simulate dice roll animation by updating dice face frequently
-            current = GetRandomValue(1, 6);
-            rollCounter++;
-        } else {
-            // Display the final result after animation completes
-            DrawText(TextFormat("Dice: %d", current), windowWidth / 2 - 40, windowHeight / 2 - 10, 40, BLACK);
-
-            // Check for key press to trigger a new roll
-            if (IsKeyPressed(KEY_SPACE)) {
-                rollCounter = 0;
-            }
-        }
-
-        // Draw
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
-
-        if (rollCounter < rollDuration) {
-            // Display the rolling animation
-            DrawText(TextFormat("Rolling... %d", current), windowWidth / 2 - 80, windowHeight / 2 - 10, 30, BLACK);
-        }
-
-        EndDrawing();
-    }
-
-    CloseWindow();
-    return 0;
-}
-
 int main(void) {
 
   InitWindow(windowWidth, windowHeight, "Rock and Roll");
@@ -80,9 +35,9 @@ int main(void) {
   bool iswin = false;
   int winner = 0;
   char dice[5] = "";
-  int current = 1;
+  int current = -1;
   int rollDuration = 20;
-  int rollCounter = 0;
+  int rollCounter = 20;
 
   while (!WindowShouldClose()) {
     for(int i=0;i<6;i++) {
@@ -138,10 +93,11 @@ int main(void) {
             pos[i] = 0;
             // tex_index[i] = 0;
           }
-          current = 0;
+          current = -1;
           iswin = false;
           winner = 0;
-          sprintf(dice,"");
+          rollCounter = 20;
+          sprintf(dice,"0");
         };
       }
 
