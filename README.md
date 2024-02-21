@@ -1,2 +1,2 @@
 # rock_and_roll
-A raylib dice rolling game
+A dice game written in raylib
